@@ -3,19 +3,18 @@ import { Inter } from 'next/font/google';
 const inter = Inter({ subsets: ['latin'] });
 import { usePlaidLink } from 'react-plaid-link';
 import { useEffect, useRef, useState } from 'react';
+import { useForm } from 'react-hook-form';
 
 export default function Home() {
   const { open, ready } = usePlaidLink({
-    token: 'link-sandbox-d51610d1-298a-4202-bcc7-a0543494a46f',
+    token: 'link-sandbox-65f15906-7c15-4512-a275-5536c56222c9',
     onSuccess: (public_token, metadata) => {
       console.log(public_token, metadata);
     },
   });
 
   return (
-    <main
-      className={`flex flex-col min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-    >
+    <main className={`flex  min-h-screen flex-col items-center p-24 space-y-4`}>
       <button
         onClick={() => open()}
         disabled={!ready}
