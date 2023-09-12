@@ -4,10 +4,14 @@ const inter = Inter({ subsets: ['latin'] });
 import { usePlaidLink } from 'react-plaid-link';
 import { useEffect, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useRouter } from 'next/router';
 
 export default function Home() {
+  const router = useRouter();
+  console.log(router.query.link);
+
   const { open, ready } = usePlaidLink({
-    token: 'link-sandbox-65f15906-7c15-4512-a275-5536c56222c9',
+    token: 'link-sandbox-c8a2ae6c-18a5-490c-a979-31a9dbfc5efd',
     onSuccess: (public_token, metadata) => {
       console.log(public_token, metadata);
     },
