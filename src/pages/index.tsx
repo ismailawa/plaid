@@ -11,9 +11,9 @@ export default function Home() {
   console.log(router.query.link);
 
   const { open, ready } = usePlaidLink({
-    token: 'link-sandbox-c8a2ae6c-18a5-490c-a979-31a9dbfc5efd',
-    onSuccess: (public_token, metadata) => {
-      console.log(public_token, metadata);
+    token: 'link-sandbox-8261b063-e0b6-443b-9d18-7162b6b35d22',
+    onSuccess: (data) => {
+      console.log(data);
     },
   });
 
