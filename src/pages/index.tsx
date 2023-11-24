@@ -1,4 +1,5 @@
 import { Inter } from 'next/font/google';
+import axios from 'axios';
 
 const inter = Inter({ subsets: ['latin'] });
 import { usePlaidLink } from 'react-plaid-link';
@@ -11,9 +12,19 @@ export default function Home() {
   console.log(router.query.link);
 
   const { open, ready } = usePlaidLink({
-    token: 'link-sandbox-8261b063-e0b6-443b-9d18-7162b6b35d22',
+    token: 'link-sandbox-78c53366-45b3-417d-b2aa-e26e23a9f658',
     onSuccess: (data) => {
       console.log(data);
+    },
+    onEvent: async (event, metadata) => {
+      try {
+        await axios.post('http://localhost:8000/api/plaids/webhook/identity', {
+          event,
+          metadata,
+        });
+      } catch (error) {
+        console.log(error);
+      }
     },
   });
 
